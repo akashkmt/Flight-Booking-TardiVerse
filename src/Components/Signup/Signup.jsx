@@ -51,7 +51,7 @@ function Signup() {
             onClose();
             toast({
               position: 'top',
-              title: 'You have successfully signed up',
+              title: 'Account created successfully',
               description: 'You can now log in',
               status: 'success',
               duration: 3000,

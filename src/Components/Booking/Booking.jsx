@@ -9,6 +9,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { ArrowDownIcon } from '@chakra-ui/icons';
+import { User } from '../../Context/User';
 
 const allCites = [];
 
@@ -184,15 +185,43 @@ function Booking() {
     getPrice();
   }, [offer, setOffer, dDate, aDate, setPrice, from, to, setFrom, setTo]);
 
+  const { loggedUser } = React.useContext(User);
+  const handleBookOne = () => {
+    loggedUser.name ? toast({
+      position: 'top',
+      title: 'Fill all the fields',
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    })
+ : toast({
+      position: 'top',
+      title: 'Please login or register to book a trip',
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    })
+
+  };
+
   const handleBook = () => {
+    loggedUser.name ? callPopUp() : toast({
+      position: 'top',
+      title: 'Please login or register to book a trip',
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    })
+  };
+  const callPopUp = ()=>{
     toast({
-      position:"top",
-        title: 'Ticket booked successfully',
-        description: 'Details are sent to your email',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      });
+      position: 'top',
+      title: 'Ticket booked successfully',
+      description: 'Details are sent to your email',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
     setFrom('');
     setTo('');
     setDDate('');
@@ -200,7 +229,7 @@ function Booking() {
     setOffer('');
     setDPrice('');
     setPrice('');
-  };
+  }
 
   const handleDDate = date => {
     switch (date) {
@@ -422,16 +451,7 @@ function Booking() {
             <Button
               onClick={() => {
                 // handleBook();
-                from && to && dDate && aDate
-                  ? handleBook()
-                  : toast({
-                    position:"top",
-                      title: 'Please fill all the fields',
-                      status: 'error',
-                      duration: 3000,
-                      isClosable: true,
-                    });
-                    
+                from && to && dDate && aDate ? handleBook() : handleBookOne();
               }}
               width={250}
               colorScheme="teal"
