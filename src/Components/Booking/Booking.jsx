@@ -191,14 +191,14 @@ function Booking() {
       position: 'top',
       title: 'Fill all the fields',
       status: 'error',
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     })
  : toast({
       position: 'top',
       title: 'Please login or register to book a trip',
       status: 'error',
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     })
 
@@ -209,7 +209,7 @@ function Booking() {
       position: 'top',
       title: 'Please login or register to book a trip',
       status: 'error',
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     })
   };
@@ -219,7 +219,7 @@ function Booking() {
       title: 'Ticket booked successfully',
       description: 'Details are sent to your email',
       status: 'success',
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     });
     setFrom('');

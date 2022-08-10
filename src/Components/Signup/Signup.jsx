@@ -36,7 +36,7 @@ function Signup() {
           position: 'top',
           title: 'Please fill in all fields',
           status: 'error',
-          duration: 3000,
+          duration: 2000,
           isClosable: true,
         });
         break;
@@ -54,7 +54,7 @@ function Signup() {
               title: 'Account created successfully',
               description: 'You can now log in',
               status: 'success',
-              duration: 3000,
+              duration: 2000,
               isClosable: true,
             });
             setEmail("");
@@ -67,7 +67,7 @@ function Signup() {
               position: 'top',
               title: 'Account already exists',
               status: 'error',
-              duration: 3000,
+              duration: 2000,
               isClosable: true,
             });
             break;

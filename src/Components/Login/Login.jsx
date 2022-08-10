@@ -38,7 +38,7 @@ function Login() {
           position: 'top',
           title: 'Please fill in all fields',
           status: 'error',
-          duration: 3000,
+          duration: 2000,
           isClosable: true,
         });
         break;
@@ -53,7 +53,7 @@ function Login() {
               position: 'top',
               title: 'Email or password is incorrect',
               status: 'error',
-              duration: 3000,
+              duration: 2000,
               isClosable: true,
             });
             break;
@@ -65,7 +65,7 @@ function Login() {
               position: 'top',
               title: 'You have successfully logged in',
               status: 'success',
-              duration: 3000,
+              duration: 2000,
               isClosable: true,
             });
             setLoggedUser(check);
