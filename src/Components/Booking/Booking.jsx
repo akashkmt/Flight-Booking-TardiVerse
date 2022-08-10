@@ -1,6 +1,6 @@
 import React from 'react';
 import Offers from '../../Offers/Offers';
-import { Box, Select, Input, Heading, Button } from '@chakra-ui/react';
+import { Box, Select, Input, Heading, Button, useToast } from '@chakra-ui/react';
 import { ArrowDownIcon } from '@chakra-ui/icons';
 
 const allCites = [
@@ -23,12 +23,23 @@ function Booking() {
   const [offer, setOffer] = React.useState('');
   const [dPrice, setDPrice] = React.useState('');
   const [price,setPrice] = React.useState('');
+  const toast = useToast();
 
   React.useEffect(()=>{
     getOffer();
     getPrice();
   },[offer, setOffer, dDate, aDate, setPrice, from, to, setFrom, setTo]);
 
+
+  const handleBook = () => {
+    setFrom('');
+    setTo('');
+    setDDate('');
+    setADate('');
+    setOffer('');
+    setDPrice('');
+    setPrice('');
+  }
 
   const handleDDate = (date) => {
     // console.log(date);
@@ -206,7 +217,20 @@ function Booking() {
               dPrice ? <span style={{margin:"auto", marginLeft:"0", marginRight:"0"}}>{dPrice}</span> : null
             }
             </Box>
-            <Button width={250} colorScheme="teal">
+            <Button onClick={()=>{handleBook();
+            (from && to && dDate && aDate) ? toast({
+              title: 'Ticket booked successfully',
+              description: "Details are sent to your email",
+              status: 'success',
+              duration: 3000,
+              isClosable: true,
+            }) : toast({
+              title: 'Please fill all the fields',
+              status: 'error',
+              duration: 3000,
+              isClosable: true,
+            });
+            }} width={250} colorScheme="teal">
               Book Ticket
             </Button>
           </Box>
